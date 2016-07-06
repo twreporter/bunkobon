@@ -1,7 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { ActivityIndicator, ScrollView, View, Text, StyleSheet } from 'react-native';
+import _ from 'lodash';
 
 import HtmlRender from 'react-native-html-render';
+
+import HeadingAuthor from './HeadingAuthor';
 
 class Article extends Component {
   componentWillMount() {
@@ -16,6 +19,22 @@ class Article extends Component {
     }
   }
 
+  _composeAuthors(article = {}) {
+    const authors = [];
+    const list = ['writters', 'photographers', 'designers', 'engineers'];
+    list.forEach((item) => {
+      if (Array.isArray(article[item])) {
+        article[item].forEach((author) => {
+          // remove 's'. writters -> writter
+          const type = item.slice(0, -1);
+          authors.push(_.merge({}, author, { type }));
+        });
+      }
+    });
+    return authors;
+  }
+
+
   render() {
     const { article } = this.props;
 
@@ -27,11 +46,14 @@ class Article extends Component {
       );
     }
 
+    const authors = this._composeAuthors(article);
+
     return (
       <ScrollView style={styles.container}>
         <View>
           <Text style={styles.titleText}>{article.title}</Text>
         </View>
+        <HeadingAuthor authors={authors} />
         <View style={styles.content}>
           <HtmlRender
             onLinkPress={() => {}}
