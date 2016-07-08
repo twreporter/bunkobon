@@ -9,7 +9,7 @@ const API_ROOT = 'http://dev.twreporter.org:8080';
 export function fetchArticle(slug) {
   return {
     [CALL_API]: {
-      endpoint: `${API_ROOT}/posts/${slug}`,
+      endpoint: `${API_ROOT}/posts/${slug}?embedded={"tags":1}`,
       method: 'GET',
       types: [ARTICLE_REQUEST, ARTICLE_SUCCESS, ARTICLE_FAILURE]
     }
