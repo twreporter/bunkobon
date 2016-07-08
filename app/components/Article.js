@@ -6,6 +6,7 @@ import HtmlRender from 'react-native-html-render';
 
 import HeadingAuthor from './article/HeadingAuthor';
 import PublishDate from './article/PublishDate';
+import BottomTags from './article/BottomTags';
 
 class Article extends Component {
   componentWillMount() {
@@ -62,6 +63,7 @@ class Article extends Component {
             value={article.content.extended.html}
           />
         </View>
+        <BottomTags data={article.tags} />
       </ScrollView>
     );
   }

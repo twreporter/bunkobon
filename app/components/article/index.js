@@ -1,1 +1,1 @@
-export HeadingAuthor  from './HeadingAuthor';
+export HeadingAuthor from './HeadingAuthor';
