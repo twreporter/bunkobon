@@ -4,9 +4,7 @@ import _ from 'lodash';
 
 import HtmlRender from 'react-native-html-render';
 
-import HeadingAuthor from './article/HeadingAuthor';
-import PublishDate from './article/PublishDate';
-import BottomTags from './article/BottomTags';
+import * as ArticleComponent from './article';
 
 class Article extends Component {
   componentWillMount() {
@@ -55,15 +53,15 @@ class Article extends Component {
         <View>
           <Text style={styles.titleText}>{article.title}</Text>
         </View>
-        <HeadingAuthor authors={authors} />
-        <PublishDate date={article.publishedDate} />
+        <ArticleComponent.HeadingAuthor authors={authors} />
+        <ArticleComponent.PublishDate date={article.publishedDate} />
         <View style={styles.content}>
           <HtmlRender
             onLinkPress={() => {}}
             value={article.content.extended.html}
           />
         </View>
-        <BottomTags data={article.tags} />
+        <ArticleComponent.BottomTags data={article.tags} />
       </ScrollView>
     );
   }
