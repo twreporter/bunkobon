@@ -1,0 +1,1 @@
+export HeadingAuthor  from './HeadingAuthor';

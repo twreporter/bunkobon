@@ -4,7 +4,8 @@ import _ from 'lodash';
 
 import HtmlRender from 'react-native-html-render';
 
-import HeadingAuthor from './HeadingAuthor';
+import HeadingAuthor from './article/HeadingAuthor';
+import PublishDate from './article/PublishDate';
 
 class Article extends Component {
   componentWillMount() {
@@ -54,6 +55,7 @@ class Article extends Component {
           <Text style={styles.titleText}>{article.title}</Text>
         </View>
         <HeadingAuthor authors={authors} />
+        <PublishDate date={article.publishedDate} />
         <View style={styles.content}>
           <HtmlRender
             onLinkPress={() => {}}
