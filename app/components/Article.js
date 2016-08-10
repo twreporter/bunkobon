@@ -58,7 +58,7 @@ class Article extends Component {
         <View style={styles.content}>
           <HtmlRender
             onLinkPress={() => {}}
-            value={article.content.extended.html}
+            value={article.content.html}
           />
         </View>
         <ArticleComponent.BottomTags data={article.tags} />
